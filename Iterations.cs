@@ -8,15 +8,17 @@ namespace DotnetIteration
 
     public static class Iteration
     {
+
+
         /*
-           Welcome to Interation
-           Down below you will find instructions for code to write.
-           As you write and save your code, you can look in your terminal where you
-           ran `dotnet watch test` to see if your code is working. The tests continuously check
-           your work each time you save. If a test is failing you have not yet completed that method
-           Once you finish a method and have it correct, the test will tell you how
-           the next method is working.
-        */
+Welcome to Interation
+Down below you will find instructions for code to write.
+As you write and save your code, you can look in your terminal where you
+ran `dotnet watch test` to see if your code is working. The tests continuously check
+your work each time you save. If a test is failing you have not yet completed that method
+Once you finish a method and have it correct, the test will tell you how
+the next method is working.
+*/
 
 
         //  
@@ -26,7 +28,8 @@ namespace DotnetIteration
         //
         public static IEnumerable<string> Yelling(List<string> words)
         {
-            throw new System.NotImplementedException();
+            var newList = words.Select(word => word.ToUpper());
+            return newList;
         }
 
 
@@ -37,8 +40,18 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> Double(List<int> numbers)
         {
-            throw new System.NotImplementedException();
+
+
+            var newScores = numbers.Select(score => score * 2);
+            return newScores;
+
+
+
+
+
+
         }
+
 
 
         // 
@@ -48,19 +61,40 @@ namespace DotnetIteration
         //    of the element.
         // 
         public static IEnumerable<string> StringyIndexes(List<string> data)
+
         {
-            throw new System.NotImplementedException();
+
+
+            var query =
+                data.Select((itsLate) => $"{itsLate} is at index {data.IndexOf(itsLate)}");
+
+            return query;
         }
+
+
+
 
 
         // 
         // 4) Complete the method OnlyTheEvenSurvive that accepts an list of
         //    numbers and returns only the elements that are even.
         // 
-        public static IEnumerable<int> OnlyTheEvenSurvive(List<int> data)
+
+        public static IEnumerable<int> OnlyTheEvenSurvive(List<int> numbers)
+
+
+
         {
-            throw new System.NotImplementedException();
+            var evenNumbers = numbers.Where((number) => number % 2 == 0);
+
+
+            return evenNumbers;
+
+
+
         }
+
+
 
 
         // 
@@ -70,7 +104,17 @@ namespace DotnetIteration
         // 
         public static IEnumerable<int> OnlyTheEvenIndexedSurvive(List<int> data)
         {
-            throw new System.NotImplementedException();
+            int IndexOf(string value, int startIndex, StringComparison comparisonType);
+
+            var evenNumbers = data.Where((number) => number % 2 == 0);
+
+
+            return evenNumbers;
+        }
+
+        private static void NotFiniteNumberException(IEnumerable<int> enumerable1)
+        {
+            throw new NotImplementedException();
         }
 
 
@@ -133,6 +177,30 @@ namespace DotnetIteration
         public static bool SomeoneToLove(List<string> data)
         {
             throw new System.NotImplementedException();
+        }
+    }
+
+    internal class NewClass
+    {
+        public int Index { get; }
+        public object Str { get; }
+
+        public NewClass(int index, object str)
+        {
+            Index = index;
+            Str = str;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is NewClass other &&
+                   Index == other.Index &&
+                   EqualityComparer<object>.Default.Equals(Str, other.Str);
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(Index, Str);
         }
     }
 }
